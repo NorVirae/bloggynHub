@@ -1,0 +1,7 @@
+.bg-milk{
+    background-color: rgba(243, 241, 170, 0.952);
+    cursor: pointer;
+}
+.bg-milk:hover{
+    box-shadow: 2px 2px 2px rgb(136, 133, 133);
+}

@@ -1,0 +1,36 @@
+*{
+    font-family: cursive;
+}
+
+/* registration styling */
+body {
+    font-family: cursive;
+    background: #F0F2f5;
+}
+
+.form-container {
+    /* background: ; */
+    border: 2px solid rgb(250,250,250);
+    border-radius: 14px;
+}
+
+
+input {
+    /* line-height: .5; */
+    border: 2px solid white;
+    border-radius: .5rem;
+    padding: 3px;
+}
+.card {
+    /* background: rgb(250,250,250); */
+    border: none;
+}
+.list-card {
+    border-radius: 20px;
+}
+
+@media only screen and (max-width: 1340px){
+    /* body {
+        background: red;
+    } */
+}

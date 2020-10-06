@@ -1,0 +1,76 @@
+<%- include('./partials/messages') -%>
+
+<div class="container">
+    <div class="row justify-content-center">
+        
+        <div class="m-5 bg-milk rounded p-2 col-lg-6">
+            <center>
+                <h3 class="text-info">Create Blog post</h3>
+            </center>
+            <small class="text-muted text-info">You upload images here a link to the image you upload
+                will be pasted under which you can insert in<br><strong class="text-info"> &lt;img src="image-link" alt="image"/&gt; inside 
+                    ur post Content
+                </strong>
+            </small>
+
+            <form action="/users/imageupload" method="post" enctype="multipart/form-data">
+                <fieldset class="form-group">
+                    
+
+                    <input name="blogImage" type="file" class="form-control-file">
+                <button class="btn btn-info btn-small" type="submit">Upload Image</button>
+
+                    <small class="text-muted">you can insert pictures to your blogs</small>
+                </fieldset>
+            </form>
+            
+            <div class="card">
+                <small class="text-warning p-1"> links will appear here
+                    <%if (imageLink !='' ){%>
+                    <%=imageLink%>
+                    <%}%>
+                </small>
+            </div>
+            <form action="/users/newpost" method="POST">
+                <input name="author" type="hidden" value="<%=currentUser.name%>"/>
+                <input name ="email" type="hidden" value="<%=currentUser.email%>"/>
+                <input name ="image" type="hidden" value="<%=imageLink%>"/>
+
+                    <fieldset class="form-group">
+                      <input
+                        type="text"
+                        placeholder="Title of Post"
+                        class="form-control"
+                        name="title"
+                        required
+                      />
+                      <small class="text-muted">You can insert your title</small>
+                    </fieldset>
+        
+        
+                    <fieldset class="form-group">
+                      <textarea
+                        rows="12"
+                        placeholder="Post Content"
+                        class="form-control"
+                        name="body"
+                        required
+                      ></textarea>
+                    </fieldset>
+        
+                    <fieldset class="form-group">
+                      <textarea
+                        placeholder="Post Content preview"
+                        class="form-control"
+                        name="contentpreview"
+                        required
+                      ></textarea>
+                    </fieldset>
+        
+                    <fieldset class="form-group">
+                      <button type="submit" class="btn btn-primary">publish post</button>
+                    </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

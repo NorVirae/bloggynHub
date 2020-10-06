@@ -1,0 +1,69 @@
+<%  let currentPage = 'users';
+    function showPage (page){
+    if (page == "msg"){
+        currentPage = "messages";}
+    else if (page =="users"){
+        currentPage = "users"
+    }
+}
+%>
+
+<% if(currentUser){%>
+<% if(currentUser.isAdmin == "true"){%>
+<div class="container">
+    <!-- <%=currentPage%> -->
+    <div class="row justify-content-center">
+        <div class="m-5 bg-milk rounded p-2 col-lg-10 border">
+            <div class="">
+                <center>
+                    <span class="h4 d-blockManage Users"><%=currentUser.name%></span>
+                    <span class="text-muted d-block"><%=currentUser.email%> - Admin</span>
+                </center>
+            </div>
+
+            <br>
+
+            <div class="bg-milk border border-bottom-0 justify-content-center mb-0">
+                <ul class="nav">
+                    <li onclick="showPage('users')" class="page1 nav-item"><a class="nav-link ">Manage Users</a>
+                    </li>
+                    <li onclick="showPage('blogLog')" class="page2 nav-item"><a href="/users/bloglog" class="nav-link">Blog Log</a></li>
+                    <li onclick="showPage('Messages')" class="page3 nav-item"><a href="/users/chats" class="nav-link">Messages</a></li>
+
+
+                </ul>
+            </div>
+            <!-- got all the users from req.locals and listed them here -->
+            <div class="adminContent">
+                <% if (currentPage == "users"){%>
+                <ul class="list-group">
+                    <% allThePeople.forEach(person=>{%>
+                    <form action="/users/handle" method="post">
+                        <input type="hidden" name="email" value="<%=person.email%>"/>
+                    <li class="list-group-item">
+                        
+                        <span class="text-info mr-2"><%= person.name%></span><span class="text-muted mr-2"><%=person.email%></span>
+                       <% if (person.isAdmin != "true"){%> 
+                        <button type="submit" class="btn btn-info m-1">Make Admin</button>
+                       <%}%>
+                        <button class="btn btn-info m-1">De-activate user</button>
+                    
+                    </li>
+                </form>
+                <%})%>
+                    </ul>
+                    <!-- <%= allThePeople%> -->
+
+                    <%}%>
+
+                    <% if (currentPage=="messages"){%>
+                        <%= "this is a message" %>
+                   <% }%>
+            </div>
+
+        </div>
+    </div>
+</div>
+<%}%>
+
+<%}%>

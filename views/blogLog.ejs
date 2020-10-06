@@ -1,0 +1,75 @@
+<% 
+if (msg != ''){
+    console.log(msg)
+}
+let currentPage = 'users';
+    function showPage (page){
+    if (page == "msg"){
+        currentPage = "messages";}
+    else if (page =="users"){
+        currentPage = "users"
+    }
+}
+%>
+
+<% if(currentUser){%>
+<% if(currentUser.isAdmin == "true"){%>
+<div class="container">
+    <!-- <%=currentPage%> -->
+    <div class="row justify-content-center">
+        <div class="m-5 bg-milk rounded p-2 col-lg-10 border">
+            <div class="">
+                <center>
+                    <span class="h4 d-blockManage Users"><%=currentUser.name%></span>
+                    <span class="text-muted d-block"><%=currentUser.email%> - Admin</span>
+                </center>
+            </div>
+
+            <br>
+
+            <div class="bg-milk border border-bottom-0 justify-content-center mb-0">
+                <ul class="nav">
+                    <li onclick="showPage('users')" class="page1 nav-item"><a href="/users/admindashboard" class="nav-link ">Manage Users</a>
+                    </li>
+                    <li onclick="showPage('blogLog')" class="page2 nav-item"><a class="nav-link">Blog Log</a></li>
+                    <li onclick="showPage('Messages')" class="page3 nav-item"><a href="/users/chats" class="nav-link">Messages</a></li>
+
+
+                </ul>
+            </div>
+            <!-- got all the users from req.locals and listed them here -->
+            <div class="adminContent">
+                <% if (currentPage == "users"){%>
+                <ul class="list-group">
+                    <% allPosts.forEach(post=>{%>
+                        <%if (post.approved+'' == 'false'){%>
+                    <form action="/users/approve" method="post">
+                        <input type="hidden" name="id" value="<%=post._id%>"/>
+                    <li class="card list-group-item">
+                        <div class="card-header"><strong><%=post.title%></strong> by <%=post.email%><%=post.approved%></div>
+                        <div class="card-body">
+                            <%=post.contentpreview%>
+                        </div>
+                        
+                    <button class="btn btn-info" type="submit">Approve post</button>
+                    <a href="/users/<%=post._id%>" class="btn btn-info" type="submit">view post</a>
+                    </li>
+                </form>
+                <%}%>
+                <%})%>
+                    </ul>
+                    <!-- <%= allThePeople%> -->
+
+                    <%}%>
+
+                    <% if (currentPage=="messages"){%>
+                        <%= "this is a message" %>
+                   <% }%>
+            </div>
+
+        </div>
+    </div>
+</div>
+<%}%>
+
+<%}%>

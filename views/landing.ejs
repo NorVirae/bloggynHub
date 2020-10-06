@@ -1,0 +1,200 @@
+<!-- ============ container body starts here ======== -->
+<div class="container  mt-3">
+  <!-- the navigation bar  -->
+
+
+
+
+
+
+  <h3 class="m-4 text-center">Be a part of our dev community and share your knowledge 🙂.</h3>
+   <div class="container">
+     
+  <div class="row ">
+
+   
+        <div class="col-lg-9 ">
+          <!-- <div class="card-columns  "> -->
+             
+    <%if (post){ %>
+
+      <%post.reverse().forEach(function(posts){ %>
+        <%if (posts.approved+'' == 'true'){%>
+          <div class="card mb-3" style="background-color: #f0f2f5;">
+              <div class="card shadow " >
+                  <div class="row ">
+                    <div class="col-md-4">
+                      <img src="<%= posts.image%>"   class="card-img p-4" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= posts.title %></h5>
+                        <p class="card-text"><%= posts.contentpreview %></p>
+                        <p class="card-text"><small class="text-muted"><%=posts.date %></small></p>
+                        <footer class="blockquote-footer">
+                            <small class="text-muted">
+                                written by  <cite title="Source Title"><%=posts.author%></cite>
+                                <%=posts.author%>
+                            
+                            </small>
+                          </footer>
+                      </div>
+                      <a href="/users/<%= posts._id%>" class="btn btn-primary m-4 ">Read more</a>
+                      <i class="far fa-thumbs-up float-right mt-4 ml-4 mr-4 "> 6 likes</i>
+                      <!-- <i class="far fa-thumbs-down float-right m-2"> 9 dislikes</i> -->
+                      <span class="far fa-comment float-right mt-4 " type="button" data-toggle="modal" data-target="#commentmodal"
+                      data-whatever="@getbootstrap"> 7 comments</span>
+                    <!-- modal -->
+                    <div class="modal fade" id="commentmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Comment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+      
+                              <div class="form-group">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Send</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+ <!-- </div> -->
+          </div>
+          <%}%>
+      <%});%>
+      <%}else{%>
+      <p>No posts Yet</p>
+      <%};%>
+  
+       
+      </div>
+
+      <!-- the right hand side -->
+     
+
+     
+       
+
+
+   <!-- for the recent posts -->
+    
+  
+
+      <div class="col-lg-3  ">
+          <h3>Popular posts</h3> 
+          <%if (post){ %>
+
+            
+        <ul class="list-group">
+          <%post.forEach(function(post, index){ %>
+              <%if (index <= 4){%>
+          <li class="list-group-item"><a href="/users/<%=post._id%>"><%= post.title %></a></li>
+                <%}%>
+          <%});%>
+        </ul>
+       
+         
+          <!-- <div class="border  ">
+         
+          <div class=" "> -->
+                <!-- <h3>Recent post</h3> -->
+            <!-- <div class="card shadow  "> -->
+              <!-- <img src="./images/Instagram Image-6.jpg"  height="250px" class="card-img-top" alt="..."> -->
+              <!-- <div class="card-body">
+                <h5 class="card-title">my name</h5>
+              
+               
+              
+              </div>
+            </div>
+            </div>
+            -->
+           
+          
+  
+  
+          <!-- </div>
+            
+   -->
+  
+   <%}else{%>
+   <p>No posts Yet</p>
+   <%};%>
+        </div>
+    </div>
+
+    
+
+   </div>
+<!-- =========== container body ends here =========== -->
+
+<!-- ======= footer starts here ============ -->
+<footer class="bg-light p-3 mt-3">
+
+  <div class="row">
+    <div class="col text-center">
+
+      <p> &copy;nHub.All Right Reserved.
+      </p>
+
+      <!-- the modal in the footer -->
+
+      <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal"
+        data-whatever="@getbootstrap">Send Your Feedback</button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">You can send us Your feedback here!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <form action="/users/feedback" method="post">
+            <div class="modal-body">
+                <div class="form-group">
+                  <label for="email">Your Email: </label>
+                  <input class="form-control" type="text" name="email"/>
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea rows= 6 name="message" class="form-control" id="message-text"></textarea>
+                </div>
+             
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Send feedback</button>
+            </div>
+
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</footer>
+<!-- ======= footer ends here ============= -->

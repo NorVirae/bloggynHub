@@ -1,0 +1,40 @@
+body {background-image:url(background.png);
+	background-repeat:repeat;
+	background-attachment:fixed;
+	background-color:gold;
+	}
+
+nav {margin:0
+	width:400;
+	height:auto;
+	position:center top;
+	margin-left:100px;
+}
+nav ul li{list-style-type:none;
+		display:block;
+		float:left;
+		width:150px;
+		height:50px;
+		background-color:white;
+		text-align:center;
+		line-height:50px;
+		border-radius:5px;
+		
+		
+		}
+nav ul li a {text-decoration:none;
+		font-style:san-serif, heveltica;
+		font-size:22px;}
+nav ul li:hover {background-color:green;
+		}
+nav ul li:hover a {display:block;
+			color:white;}
+
+div h1 {border-width:10px;
+	font-size:50px;
+	color: steelblue;
+	font-style:cursive;
+	margin:300;
+	margin-left:400px;
+	text-decoration:none;}
+div h1 a{text-decoration:none;}

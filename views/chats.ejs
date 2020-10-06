@@ -1,0 +1,43 @@
+<% if(currentUser){%>
+    <% if(currentUser.isAdmin == "true"){%>
+<div class="container ">
+    <div class="justify-content-center row">
+
+        <div class="col-lg-10">
+            
+                <div class="container">
+                    
+                    <div class="row justify-content-center">
+                        <div class="m-5 bg-milk rounded p-2 col-lg-10 border">
+                            <div class="">
+                                <center>
+                                    <span class="h4 d-blockManage Users"><%=currentUser.name%></span>
+                                    <span class="text-muted d-block"><%=currentUser.email%> - Admin</span>
+                                </center>
+                            </div>
+                
+                            <br>
+            
+            <%- include ("./partials/panelLink.ejs") -%>
+
+        
+<ul style = "height:400px" class="list-group">
+<% allTheMessages.forEach(msg=>{%>
+   <li class="card list-group-item">
+       
+           <div class="card-header">
+               <%=msg.email%>
+           </div>
+           <div class="card-body">
+        <%-msg.msg%>
+    </div>
+
+    </li>
+    
+<%})%>
+</ul>
+</div>
+</div>
+</div>
+<%}%>
+<%}%>
