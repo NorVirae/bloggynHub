@@ -23,9 +23,11 @@
           <div class="card mb-3" style="background-color: #f0f2f5;">
               <div class="card shadow " >
                   <div class="row ">
+                     <%if(posts.image !== ""){%>
                     <div class="col-md-4">
                       <img src="<%= posts.image%>"   class="card-img p-4" alt="...">
                     </div>
+                    <%}%>
                     <div class="col-md-8">
                       <div class="card-body">
                         <h5 class="card-title"><%= posts.title %></h5>
